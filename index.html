@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examination Token - UCSI University</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Student Exam Token - Public Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        /* ==========================================
+           Oracle APEX Theme 42 - Vita Red UCSI Clone
+           ========================================== */
+
         * {
             margin: 0;
             padding: 0;
@@ -13,224 +19,364 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background-color: #f5f5f5;
-        }
-
-        .header {
-            background-color: white;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 18px;
-            font-weight: normal;
-            min-height: 45px;
-        }
-
-        .logo-icon {
-            height: 60px;
-            width: auto;
-            object-fit: contain;
-            display: block;
-        }
-        
-        .logo-text {
-            font-size: 20px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .enrollment-link {
-            color: #333;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .enrollment-link::before {
-            content: "📄 ";
-        }
-
-        .red-bar {
-            background-color: #c41e3a;
-            height: 40px;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 30px;
-        }
-
-        h1 {
-            font-size: 32px;
-            margin-bottom: 30px;
-            color: #333;
-        }
-
-        .content-wrapper {
-            display: flex;
-            gap: 20px;
-        }
-
-        .photo-section {
-            background: white;
-            padding: 20px;
-            border-radius: 4px;
-            border: 1px solid #d0d0d0;
-            width: 350px;
-            flex-shrink: 0;
-        }
-
-        .photo-header {
-            color: #0066cc;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .photo-container {
-            background-color: #e8e8e8;
-            padding: 20px;
-            text-align: center;
-            border-radius: 4px;
-        }
-
-        .photo-placeholder {
-            width: 150px;
-            height: 180px;
-            background-color: white;
-            border: 1px solid #ddd;
-            margin: 0 auto 10px;
-            overflow: hidden;
-        }
-
-        .photo-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .name-label {
-            margin-top: 10px;
-            font-size: 14px;
-        }
-
-        .info-section {
-            flex: 1;
-            background: white;
-            padding: 30px;
-            border-radius: 4px;
-            border: 1px solid #d0d0d0;
-        }
-
-        .table-container {
-            border: 1px solid #d0d0d0;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-top: 20px;
-            background-color: #d9e3f0;
-        }
-
-        .info-row {
-            margin-bottom: 15px;
-            padding: 15px 20px;
-            border: 1px dashed #d0d0d0;
-            border-radius: 4px;
-            background-color: white;
-        }
-
-        .info-label {
-            font-size: 11px;
-            color: #666;
-            margin-bottom: 8px;
-        }
-
-        .info-value {
-            font-size: 14px;
-            color: #333;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #404040;
+            min-height: 100%;
             font-weight: 400;
         }
 
-        .search-bar {
-            background-color: #d9e3f0;
-            padding: 12px 20px;
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between; 
-            align-items: center;
-            flex-wrap: wrap; 
-            gap: 15px; 
+        /* --- Header (t-Header) --- */
+        .t-Header {
+            background-color: #fff;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 500;
         }
 
-        .search-group-connected {
+        .t-Header-branding {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            height: 56px;
+        }
+
+        .t-Header-logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .t-Header-logo img {
+            max-height: 40px;
+            width: auto;
+        }
+
+        .t-Header-navBar {
+            display: flex;
+            align-items: center;
+        }
+
+        .t-NavigationBar-item a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #404040;
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 2px;
+        }
+
+        .t-NavigationBar-item a:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .t-NavigationBar-item .t-Icon {
+            font-size: 16px;
+            color: #707070;
+        }
+
+        /* --- Nav Bar (Red) --- */
+        .t-Header-nav {
+            background-color: #be1e2d;
+            height: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* --- Body / Main Content --- */
+        .t-Body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .t-Body-main {
+            padding: 0;
+        }
+
+        .t-Body-contentInner {
+            padding: 0 16px 16px;
+        }
+
+        /* --- Content Block (Title Region) --- */
+        .t-ContentBlock {
+            margin-bottom: 0;
+        }
+
+        .t-ContentBlock-header {
+            padding: 16px 16px 8px;
+        }
+
+        .t-ContentBlock-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+            margin: 0;
+            letter-spacing: -0.3px;
+        }
+
+        .t-ContentBlock-body {
+            padding: 0 16px 16px;
+        }
+
+        /* --- Region (t-Region) --- */
+        .t-Region {
+            background: #f7fafc;
+            border: 1px solid #d8d8d8;
+            border-radius: 12px;
+            margin-bottom: 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+        }
+
+        .t-Region-header {
+            display: none;
+            /* removeHeader */
+        }
+
+        .t-Region-body {
+            padding: 12px;
+        }
+
+        /* --- Layout: Photo + Details --- */
+        .content-row {
+            display: flex;
+            gap: 0;
+        }
+
+        .col-3 {
+            width: 25%;
+            padding: 0 8px;
+        }
+
+        .col-9 {
+            width: 75%;
+            padding: 0 8px;
+            border-radius: 12px;
+        }
+
+        /* --- Photo Report --- */
+        .photo-report {
+            text-align: center;
+            padding: 8px;
+        }
+
+        .photo-report table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .photo-report th {
+            padding: 8px;
+            text-align: center;
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 12px;
+            font-weight: 400;
+            color: #337ab7;
+        }
+
+        .photo-report td {
+            text-align: center;
+            padding: 12px 8px;
+            background: #fff;
+        }
+
+        .photo-report img {
+            border: 2px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .photo-report .name-text {
+            margin-top: 6px;
+            font-size: 12px;
+            color: #404040;
+            font-weight: 400;
+        }
+
+        .photo-report .name-text b {
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        /* --- Form Fields (each field is its own dotted box) --- */
+        .t-Form-fieldContainer {
+            margin-bottom: 8px;
+            padding: 10px 14px 10px;
+            border: 1px dashed #b8cfe0;
+            border-radius: 4px;
+            position: relative;
+            background: #fff;
+        }
+
+        .t-Form-fieldContainer:last-child {
+            margin-bottom: 0;
+        }
+
+        .t-Form-labelContainer {
+            margin-bottom: 1px;
+        }
+
+        .t-Form-label {
+            font-size: 11px;
+            color: #707070;
+            font-weight: 400;
+            text-transform: none;
+            display: block;
+            line-height: 1.3;
+        }
+
+
+
+        .apex-item-display-only {
+            font-size: 14px;
+            color: #404040;
+            font-weight: 400;
+            line-height: 1.6;
+            display: block;
+            padding: 2px 0 0;
+        }
+
+        /* --- Interactive Report Region --- */
+        .t-IRR-region {
+            margin-top: 16px;
+        }
+
+        .t-IRR-region h2.u-VisuallyHidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* --- IR Toolbar --- */
+        .a-IRR-toolbar {
+            background: #e8edf4;
+            padding: 8px 12px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            border: 1px solid #c3cfe0;
+            border-bottom: none;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .a-IRR-toolbar-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .a-IRR-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .a-IRR-search {
             display: flex;
             align-items: center;
             flex: 1;
-            min-width: 280px; 
         }
 
-
-        .search-group-connected .search-icon-btn {
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
+        .a-IRR-button--colSearch {
+            background: #fff;
+            border: 1px solid #a0afc0;
             border-right: none;
-            margin-right: 0;
-            height: 38px; 
+            border-radius: 3px 0 0 3px;
+            padding: 0 10px;
+            height: 30px;
+            cursor: pointer;
             display: flex;
             align-items: center;
-        }
-
-        .search-group-connected .search-input {
-            border-radius: 0;
-            height: 38px;
-            border-left: 1px solid #ccc; 
-            border-right: none;
-            margin: 0;
-            width: 100%;
-        }
-        
-        .search-group-connected .search-input:focus {
-            z-index: 2;
-            position: relative;
-        }
-
-        .search-group-connected .go-button {
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-            height: 38px;
-            margin-left: 0;
-            border-left: 1px solid #999; 
-        }
-
-        .search-icon-btn {
-            background-color: white;
-            border: 1px solid #999;
-            padding: 0 16px;
-            border-radius: 3px;
-            cursor: pointer;
+            gap: 4px;
             font-size: 14px;
-            font-weight: 500;
+            color: #404040;
             position: relative;
         }
 
+        .a-IRR-search-field {
+            border: 1px solid #a0afc0;
+            border-left: none;
+            border-right: none;
+            padding: 0 8px;
+            height: 30px;
+            font-size: 12px;
+            flex: 1;
+            min-width: 120px;
+            outline: none;
+        }
+
+        .a-IRR-search-field:focus {
+            border-color: #5b9bd5;
+            box-shadow: 0 0 0 1px #5b9bd5 inset;
+        }
+
+        .a-IRR-button--search {
+            background: #fff;
+            border: 1px solid #a0afc0;
+            border-left: none;
+            border-radius: 0 3px 3px 0;
+            padding: 0 16px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 700;
+            color: #404040;
+        }
+
+        .a-IRR-button--search:hover,
+        .a-IRR-button--colSearch:hover {
+            background: #f0f4f8;
+        }
+
+        .a-IRR-actions {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .a-IRR-button--actions {
+            background: #fff;
+            border: 1px solid #a0afc0;
+            border-radius: 3px;
+            padding: 0 12px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 400;
+            color: #404040;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .a-IRR-button--actions:hover {
+            background: #f0f4f8;
+        }
+
+        /* --- Search Dropdown --- */
         .search-dropdown {
             position: absolute;
-            top: calc(100% + 5px);
+            top: calc(100% + 2px);
             left: 0;
-            background: white;
-            border: 1px solid #999;
+            background: #fff;
+            border: 1px solid #a0afc0;
             border-radius: 3px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
             z-index: 1000;
-            min-width: 200px;
+            min-width: 180px;
             display: none;
         }
 
@@ -239,19 +385,19 @@
         }
 
         .dropdown-header {
-            background-color: #c41e3a;
-            color: white;
-            padding: 12px 15px;
-            font-weight: bold;
-            font-size: 14px;
+            background-color: #be1e2d;
+            color: #fff;
+            padding: 8px 12px;
+            font-weight: 700;
+            font-size: 12px;
         }
 
         .dropdown-item {
-            padding: 12px 15px;
+            padding: 8px 12px;
             cursor: pointer;
-            font-size: 14px;
-            color: #333;
-            border-bottom: 1px solid #e0e0e0;
+            font-size: 12px;
+            color: #404040;
+            border-bottom: 1px solid #eee;
         }
 
         .dropdown-item:last-child {
@@ -259,378 +405,603 @@
         }
 
         .dropdown-item:hover {
+            background-color: #f0f4f8;
+        }
+
+        /* --- Actions Dropdown Menu --- */
+        .actions-menu {
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 0;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            min-width: 220px;
+            display: none;
+            overflow: hidden;
+            padding: 4px 0;
+        }
+
+        .actions-menu.active {
+            display: block;
+        }
+
+        .actions-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-size: 13px;
+            color: #404040;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background 0.1s;
+        }
+
+        .actions-menu-item:hover {
             background-color: #f5f5f5;
         }
 
-        .search-input {
-            padding: 8px 12px;
-            border: 1px solid #999;
-            border-radius: 3px;
+        .actions-menu-item .menu-icon {
+            width: 20px;
+            text-align: center;
             font-size: 14px;
+            color: #707070;
+            flex-shrink: 0;
+        }
+
+        .actions-menu-item.highlight {
+            background-color: #be1e2d;
+            color: #fff;
+        }
+
+        .actions-menu-item.highlight .menu-icon {
+            color: #fff;
+        }
+
+        .actions-menu-item.highlight:hover {
+            background-color: #a51a27;
+        }
+
+        .actions-menu-item .menu-label {
             flex: 1;
         }
 
-        .search-icon-btn:hover,
-        .go-button:hover,
-        .actions-button:hover {
-            background-color: #f0f0f0;
+        .actions-menu-item .menu-arrow {
+            font-size: 10px;
+            color: #999;
         }
 
-        .search-icon-btn:active,
-        .go-button:active,
-        .actions-button:active {
-            background-color: #e0e0e0;
-            transform: translateY(1px);
+        .actions-menu-separator {
+            height: 1px;
+            background: #e8e8e8;
+            margin: 4px 0;
         }
 
-        .go-button {
-            background-color: white;
-            border: 1px solid #999;
-            padding: 0 20px;
-            border-radius: 8px; 
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-        }
-
-        .actions-button {
-            background-color: white;
-            border: 1px solid #999;
-            padding: 0 16px;
-            height: 38px; 
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 100px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 0px;
-            background: white;
+        /* --- Data Table (IR Report) --- */
+        .a-IRR-tableContainer {
+            border: 1px solid #c3cfe0;
+            border-top: none;
             overflow: hidden;
         }
 
-        thead {
-            background-color: #e8f2f7;
-            border-top: 1px solid #d0d0d0;
+        .a-IRR-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
         }
 
-        th {
-            padding: 12px;
+        .a-IRR-table thead tr {
+            background-color: #f0f4f8;
+        }
+
+        .a-IRR-table th {
+            padding: 10px 12px;
             text-align: left;
-            font-weight: 600;
-            color: #0066cc;
-            font-size: 13px;
-            border-bottom: 1px solid #d0d0d0;
-            border-right: 1px solid #d0d0d0;
+            font-weight: 700;
+            color: #0070c0;
+            font-size: 12px;
+            border-bottom: 1px solid #c3cfe0;
+            border-right: 1px solid #e0e8f0;
+            white-space: nowrap;
         }
 
-        th:last-child {
+        .a-IRR-table th:last-child {
             border-right: none;
         }
 
-        td {
-            padding: 15px 12px;
-            border-bottom: 1px solid #d0d0d0;
-            border-right: 1px solid #d0d0d0;
-            font-size: 13px;
-            color: #333;
+        .a-IRR-table th a {
+            color: #0070c0;
+            text-decoration: none;
+            font-weight: 700;
         }
 
-        td:last-child {
+        .a-IRR-table th a:hover {
+            text-decoration: underline;
+        }
+
+        .a-IRR-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e8e8e8;
+            border-right: 1px solid #f0f0f0;
+            font-size: 12px;
+            color: #404040;
+            font-weight: 400;
+        }
+
+        .a-IRR-table td:last-child {
             border-right: none;
         }
 
-        tbody tr:last-child td {
+        .a-IRR-table tbody tr:hover {
+            background-color: #f0f7ff;
+        }
+
+        .a-IRR-table tbody tr:last-child td {
             border-bottom: none;
         }
 
-        tbody tr:last-child td:first-child {
-            border-bottom-left-radius: 0px;
+        /* --- Pagination --- */
+        .a-IRR-pagination {
+            padding: 8px 12px;
+            text-align: center;
+            font-size: 12px;
+            color: #707070;
+            border: 1px solid #c3cfe0;
+            border-top: 1px solid #e0e8f0;
+            background: #fff;
+            border-radius: 0 0 4px 4px;
+            font-weight: 400;
         }
 
-        tbody tr:last-child td:last-child {
-            border-bottom-right-radius: 0px;
+        /* --- Footer --- */
+        .t-Footer {
+            background: #fff;
+            border-top: 1px solid #e0e0e0;
+            padding: 12px 16px;
+            margin-top: 24px;
         }
 
-        tr:hover {
-            background-color: #fafafa;
+        .t-Footer-content {
+            text-align: center;
         }
 
-        .dropdown-icon::after {
-            content: "";
-            font-size: 10px;
+        .t-Footer-version {
+            font-size: 11px;
+            color: #999;
+            font-weight: 400;
         }
 
-        .pagination {
-            text-align: right;
-            padding: 10px 12px;
-            font-size: 13px;
-            color: #666;
-            background: white;
-            border-top: 1px solid #d0d0d0;
-            border-radius: 0 0 8px 8px;
+        .t-Footer-topButton {
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #707070;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+            font-size: 16px;
         }
 
-        /* 響應式設計 - 手機模式 */
+        .t-Footer-topButton:hover {
+            background: #f5f5f5;
+            color: #404040;
+        }
+
+        /* --- Responsive --- */
         @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-
-            .content-wrapper {
+            .content-row {
                 flex-direction: column;
             }
 
-            .photo-section {
+            .col-3,
+            .col-9 {
                 width: 100%;
-                margin-bottom: 20px;
+                padding: 0;
             }
 
-            .info-section {
-                padding: 15px;
+            .col-3 {
+                margin-bottom: 16px;
             }
 
-            h1 {
-                font-size: 24px;
-                margin-bottom: 20px;
+            .t-ContentBlock-header {
+                padding: 12px 12px 4px;
             }
 
-            .search-bar {
-                padding: 10px;
-                flex-direction: column;
-                align-items: stretch;
+            .t-ContentBlock-body {
+                padding: 0 12px 12px;
             }
 
-            .search-group-connected {
-                width: 100%;
-                margin-bottom: 10px;
+            .t-ContentBlock-title {
+                font-size: 18px;
             }
 
-            .actions-button {
-                width: 100%; 
+            .a-IRR-toolbar {
+                gap: 6px;
             }
 
-            table {
-                font-size: 12px;
+            .a-IRR-table th,
+            .a-IRR-table td {
+                padding: 8px;
+                font-size: 11px;
             }
 
-            th, td {
-                padding: 8px 6px;
-                font-size: 12px;
-            }
-
-            /* 表格水平滾動 */
-            .table-container {
+            .a-IRR-tableContainer {
                 overflow-x: auto;
             }
         }
 
         @media (max-width: 480px) {
-            .header {
-                padding: 10px 15px;
+            .t-Header-branding {
+                padding: 0 12px;
+                height: 48px;
             }
 
-            .logo-icon {
-                height: 40px;
+            .t-Header-logo img {
+                max-height: 32px;
             }
 
-            h1 {
-                font-size: 20px;
+            .t-Header-nav {
+                height: 32px;
             }
 
-            .info-row {
-                padding: 12px 15px;
-                margin-bottom: 10px;
+            .t-Form-fieldContainer {
+                padding: 8px 12px 6px;
             }
 
-            .info-label {
-                font-size: 10px;
-            }
-
-            .info-value {
+            .apex-item-display-only {
                 font-size: 13px;
             }
         }
-
-        @media (max-width: 380px) {
-            .go-button {
-                display: none;
-            }
-        }
-
-
     </style>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchBtn = document.querySelector('.search-icon-btn');
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Column Search Dropdown ---
+            const searchBtn = document.querySelector('.a-IRR-button--colSearch');
             const searchDropdown = document.getElementById('searchDropdown');
             let selectedColumn = 'All Columns';
 
-            // 切換下拉選單
-            searchBtn.addEventListener('click', function(e) {
+            searchBtn.addEventListener('click', function (e) {
                 e.stopPropagation();
                 searchDropdown.classList.toggle('active');
+                // Close actions menu if open
+                actionsMenu.classList.remove('active');
             });
 
-            // 選擇搜尋欄位
             const dropdownItems = document.querySelectorAll('.dropdown-item');
             dropdownItems.forEach(item => {
-                item.addEventListener('click', function() {
+                item.addEventListener('click', function () {
                     selectedColumn = this.textContent;
                     searchDropdown.classList.remove('active');
-                    console.log('Selected column:', selectedColumn);
                 });
             });
 
-            // 點擊外部關閉選單
-            document.addEventListener('click', function(e) {
-                if (!searchBtn.contains(e.target) && !searchDropdown.contains(e.target)) {
-                    searchDropdown.classList.remove('active');
-                }
-            });
-
-            // Go 按鈕
-            const goBtn = document.querySelector('.go-button');
-            goBtn.addEventListener('click', function() {
-                const searchInput = document.querySelector('.search-input');
+            // --- Go button ---
+            const goBtn = document.querySelector('.a-IRR-button--search');
+            goBtn.addEventListener('click', function () {
+                const searchInput = document.querySelector('.a-IRR-search-field');
                 console.log('Searching in', selectedColumn, 'for:', searchInput.value);
             });
 
-            // Actions 按鈕
-            const actionsBtn = document.querySelector('.actions-button');
-            actionsBtn.addEventListener('click', function() {
-                alert('Actions menu clicked');
+            // --- Actions Dropdown ---
+            const actionsBtn = document.querySelector('.a-IRR-button--actions');
+            const actionsMenu = document.getElementById('actionsMenu');
+
+            actionsBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                actionsMenu.classList.toggle('active');
+                // Close search dropdown if open
+                searchDropdown.classList.remove('active');
+            });
+
+            // --- Close all on outside click ---
+            document.addEventListener('click', function (e) {
+                if (!searchBtn.contains(e.target) && !searchDropdown.contains(e.target)) {
+                    searchDropdown.classList.remove('active');
+                }
+                if (!actionsBtn.contains(e.target) && !actionsMenu.contains(e.target)) {
+                    actionsMenu.classList.remove('active');
+                }
             });
         });
     </script>
 </head>
+
 <body>
-    <div class="header">
-        <div class="logo">
-            <img src="ucsi-logo.jpg" alt="UCSI Logo" class="logo-icon" onerror="this.style.display='none'">
-        </div>
-        <a href="#" class="enrollment-link">Enrollment Job List</a>
-    </div>
-
-    <div class="red-bar"></div>
-
-    <div class="container">
-        <h1>Examination Token</h1>
-
-        <div class="content-wrapper">
-            <div class="photo-section">
-                <div class="photo-header">Photo</div>
-                <div class="photo-container">
-                    <div class="photo-placeholder">
-                        <img src="student-photo.jpg" alt="Student Photo" style="width: 150px; height: 180px; object-fit: cover;">
-                    </div>
-                    <div class="name-label">Name: <strong>Hou Boqian</strong></div>
-                </div>
+    <!-- ===== Header ===== -->
+    <header class="t-Header" role="banner">
+        <div class="t-Header-branding">
+            <div class="t-Header-logo">
+                <a href="#">
+                    <img src="assets/ucsilogo.png" alt="Application" title="Application"
+                        onerror="this.style.display='none'">
+                </a>
             </div>
+            <div class="t-Header-navBar">
+                <ul class="t-NavigationBar" style="list-style:none; display:flex; margin:0; padding:0;">
+                    <li class="t-NavigationBar-item">
+                        <a href="#" title="Enrollment Job List">
+                            <span class="t-Icon fa fa-file-lines"></span>
+                            <!-- <span>Enrollment Job List</span> -->
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="t-Header-nav"></div>
+    </header>
 
-            <div class="info-section">
-                <div class="info-row">
-                    <div class="info-label">Student Name</div>
-                    <div class="info-value">Hou Boqian</div>
-                </div>
+    <!-- ===== Body ===== -->
+    <div class="t-Body">
+        <div class="t-Body-main">
+            <div class="t-Body-contentInner">
 
-                <div class="info-row">
-                    <div class="info-label">Student Number</div>
-                    <div class="info-value">1002476840</div>
-                </div>
+                <!-- Title Region -->
+                <div class="t-ContentBlock">
+                    <div class="t-ContentBlock-header">
+                        <h1 class="t-ContentBlock-title">Supplementary Examination Token</h1>
+                    </div>
+                    <div class="t-ContentBlock-body">
 
-                <div class="info-row">
-                    <div class="info-label">Semester</div>
-                    <div class="info-value">2025-09</div>
-                </div>
+                        <!-- Main Region (Photo + Details) -->
+                        <div class="t-Region">
+                            <div class="t-Region-body">
+                                <div class="content-row">
+                                    <!-- Left: Photo (col-3) -->
+                                    <div class="col-3">
+                                        <div class="t-Region" style="border:1px solid #e0e0e0;">
+                                            <div class="t-Region-body" style="padding:8px;">
+                                                <div class="photo-report" style="border: 1px solid #e0e0e0;">
+                                                    <table>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Photo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <img src="assets/face.jpeg" height="125" width="90"
+                                                                        alt="Student Photo"
+                                                                        style="border: 2px solid #CCC; border-radius: 4px;">
+                                                                    <br>
+                                                                    <span class="name-text">Name:
+                                                                        <b>Meng Kang</b></span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                <div class="info-row">
-                    <div class="info-label">Fee Owing</div>
-                    <div class="info-value">RM 0</div>
-                </div>
+                                    <!-- Right: Exam Token Details (col-9) -->
+                                    <div class="col-9" style="border:1px solid #e0e0e0; padding: 12px;">
+                                        <div class="t-Region" style="border:0px solid #e0e0e0;">
+                                            <div class="t-Region-body" style="padding:0;">
 
-                <div class="info-row">
-                    <div class="info-label">Department</div>
-                    <div class="info-value">Department of Mass Communication</div>
-                </div>
+                                                <!-- Student Name -->
+                                                <div class="t-Form-fieldContainer">
+                                                    <div class="t-Form-labelContainer">
+                                                        <label class="t-Form-label">Student Name</label>
+                                                    </div>
+                                                    <div class="t-Form-inputContainer">
+                                                        <span class="apex-item-display-only">Meng Kang</span>
+                                                    </div>
+                                                </div>
 
-                <div class="info-row">
-                    <div class="info-label">Faculty Name</div>
-                    <div class="info-value">Faculty of Social Sciences and Liberal Arts</div>
-                </div>
+                                                <!-- Student Number -->
+                                                <div class="t-Form-fieldContainer">
+                                                    <div class="t-Form-labelContainer">
+                                                        <label class="t-Form-label">Student Number</label>
+                                                    </div>
+                                                    <div class="t-Form-inputContainer">
+                                                        <span class="apex-item-display-only">1002372426</span>
+                                                    </div>
+                                                </div>
 
-                <div class="info-row">
-                    <div class="info-label">Programme Name</div>
-                    <div class="info-value">Bachelor of Arts (Hons) in Mass Communication</div>
-                </div>
+                                                <!-- Semester -->
+                                                <div class="t-Form-fieldContainer">
+                                                    <div class="t-Form-labelContainer">
+                                                        <label class="t-Form-label">Semester</label>
+                                                    </div>
+                                                    <div class="t-Form-inputContainer">
+                                                        <span class="apex-item-display-only">2025-09</span>
+                                                    </div>
+                                                </div>
 
-                <div class="table-container">
-                    <div class="search-bar">
-                        
-                        <div class="search-group-connected">
-                            <button class="search-icon-btn">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                            <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                <div class="search-dropdown" id="searchDropdown">
-                                    <div class="dropdown-header">All Columns</div>
-                                    <div class="dropdown-item">Subject Name</div>
-                                    <div class="dropdown-item">Subject Code</div>
-                                    <div class="dropdown-item">Exam Schedule</div>
-                                    <div class="dropdown-item">Venue</div>
+                                                <!-- Fee Owing -->
+                                                <div class="t-Form-fieldContainer">
+                                                    <div class="t-Form-labelContainer">
+                                                        <label class="t-Form-label">Fee Owing</label>
+                                                    </div>
+                                                    <div class="t-Form-inputContainer">
+                                                        <span class="apex-item-display-only">RM 0</span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Department -->
+                                                <div class="t-Form-fieldContainer">
+                                                    <div class="t-Form-labelContainer">
+                                                        <label class="t-Form-label">Department</label>
+                                                    </div>
+                                                    <div class="t-Form-inputContainer">
+                                                        <span class="apex-item-display-only">Department of Management
+                                                            Studies</span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Faculty Name -->
+                                                <div class="t-Form-fieldContainer">
+                                                    <div class="t-Form-labelContainer">
+                                                        <label class="t-Form-label">Faculty Name</label>
+                                                    </div>
+                                                    <div class="t-Form-inputContainer">
+                                                        <span class="apex-item-display-only">Faculty of Business and
+                                                            Management</span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Programme Name -->
+                                                <div class="t-Form-fieldContainer">
+                                                    <div class="t-Form-labelContainer">
+                                                        <label class="t-Form-label">Programme Name</label>
+                                                    </div>
+                                                    <div class="t-Form-inputContainer">
+                                                        <span class="apex-item-display-only">Bachelor of Arts (Hons) in
+                                                            Business Administration</span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <!-- Interactive Report: Exam Slip -->
+                                        <div class="t-IRR-region">
+                                            <h2 class="u-VisuallyHidden">Exam Slip Supplementary</h2>
+
+                                            <!-- IR Toolbar -->
+                                            <div class="a-IRR-toolbar">
+                                                <div class="a-IRR-controls">
+                                                    <div class="a-IRR-search">
+                                                        <button class="a-IRR-button--colSearch" type="button"
+                                                            title="Select columns to search">
+                                                            <i class="fa fa-magnifying-glass"></i>
+                                                            <i class="fa fa-caret-down" style="font-size:10px;"></i>
+                                                            <div class="search-dropdown" id="searchDropdown">
+                                                                <div class="dropdown-header">All Columns</div>
+                                                                <div class="dropdown-item">Subject Name</div>
+                                                                <div class="dropdown-item">Subject Code</div>
+                                                                <div class="dropdown-item">Study Intake</div>
+                                                                <div class="dropdown-item">Exam Schedule</div>
+                                                                <div class="dropdown-item">Venue</div>
+                                                            </div>
+                                                        </button>
+                                                        <input class="a-IRR-search-field" type="text" size="30"
+                                                            maxlength="4000" title="Search Report">
+                                                        <button class="a-IRR-button--search" type="button">
+                                                            <span>Go</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="a-IRR-actions">
+                                                    <button class="a-IRR-button--actions" type="button">
+                                                        Actions <i class="fa fa-caret-down" style="font-size:10px;"></i>
+                                                    </button>
+                                                    <!-- Actions Dropdown Menu -->
+                                                    <div class="actions-menu" id="actionsMenu">
+                                                        <div class="actions-menu-item highlight">
+                                                            <span class="menu-icon"><i
+                                                                    class="fa fa-table-columns"></i></span>
+                                                            <span class="menu-label">Select Columns</span>
+                                                        </div>
+                                                        <div class="actions-menu-separator"></div>
+                                                        <div class="actions-menu-item">
+                                                            <span class="menu-icon"><i class="fa fa-filter"></i></span>
+                                                            <span class="menu-label">Filter</span>
+                                                        </div>
+                                                        <div class="actions-menu-item">
+                                                            <span class="menu-icon"><i class="fa fa-list-ol"></i></span>
+                                                            <span class="menu-label">Rows Per Page</span>
+                                                            <span class="menu-arrow"><i
+                                                                    class="fa fa-chevron-right"></i></span>
+                                                        </div>
+                                                        <div class="actions-menu-item">
+                                                            <span class="menu-icon"><i
+                                                                    class="fa fa-pen-to-square"></i></span>
+                                                            <span class="menu-label">Format</span>
+                                                            <span class="menu-arrow"><i
+                                                                    class="fa fa-chevron-right"></i></span>
+                                                        </div>
+                                                        <div class="actions-menu-separator"></div>
+                                                        <div class="actions-menu-item">
+                                                            <span class="menu-icon"><i
+                                                                    class="fa fa-clock-rotate-left"></i></span>
+                                                            <span class="menu-label">Flashback</span>
+                                                        </div>
+                                                        <div class="actions-menu-separator"></div>
+                                                        <div class="actions-menu-item">
+                                                            <span class="menu-icon"><i
+                                                                    class="fa fa-rotate-left"></i></span>
+                                                            <span class="menu-label">Reset</span>
+                                                        </div>
+                                                        <div class="actions-menu-separator"></div>
+                                                        <div class="actions-menu-item">
+                                                            <span class="menu-icon"><i
+                                                                    class="fa fa-circle-question"></i></span>
+                                                            <span class="menu-label">Help</span>
+                                                        </div>
+                                                        <div class="actions-menu-separator"></div>
+                                                        <div class="actions-menu-item">
+                                                            <span class="menu-icon"><i
+                                                                    class="fa fa-download"></i></span>
+                                                            <span class="menu-label">Download</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- IR Data Table -->
+                                        <div class="a-IRR-tableContainer">
+                                            <table class="a-IRR-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th><a href="#">Subject Name</a></th>
+                                                        <th><a href="#">Subject Code</a></th>
+                                                        <th><a href="#">Study Intake</a></th>
+                                                        <th><a href="#">Exam Schedule</a></th>
+                                                        <th><a href="#">Venue</a></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Corporate Finance</td>
+                                                        <td>BBA2103</td>
+                                                        <td>2025-09</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <!-- Pagination -->
+                                        <div class="a-IRR-pagination">1 - 1</div>
+                                    </div>
+
                                 </div>
-                            </button>
-                            <input type="text" class="search-input" placeholder="">
-                            <button class="go-button">Go</button>
+                            </div>
                         </div>
-
-                        <button class="actions-button">Actions 
-                            <i class="fa fa-angle-down" aria-hidden="true"></i>
-                        </button>
                     </div>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Subject Name</th>
-                                <th>Subject Code</th>
-                                <th>Exam Schedule</th>
-                                <th>Venue</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Bahasa Melayu Komunikasi 3</td>
-                                <td>MPU3143</td>
-                                <td>06-JAN-2026 02:30PM</td>
-                                <td>DETSAR / Examination Hall</td>
-                            </tr>
-                            <tr>
-                                <td>Alternative Voices & Issues In Mass Communication</td>
-                                <td>SM210</td>
-                                <td>04-JAN-2026 10:00AM</td>
-                                <td>DETSAR / Examination Hall</td>
-                            </tr>
-                            <tr>
-                                <td>Introduction To Public Relations</td>
-                                <td>SM108</td>
-                                <td>07-JAN-2026 10:00AM</td>
-                                <td>DETSAR / Examination Hall</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="pagination">1 - 3</div>
                 </div>
             </div>
+
         </div>
     </div>
+    </div>
+
+    <!-- ===== Footer ===== -->
+    <footer class="t-Footer" role="contentinfo">
+        <div class="t-Footer-content">
+            <div class="t-Footer-version">IISV2.20220222</div>
+        </div>
+    </footer>
+    <a href="#" class="t-Footer-topButton" title="Start of page">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+
 </body>
+
 </html>
