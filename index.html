@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examination Token - UCSI University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: normal;
+            min-height: 45px;
+        }
+
+        .logo-icon {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .logo-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .enrollment-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .enrollment-link::before {
+            content: "📄 ";
+        }
+
+        .red-bar {
+            background-color: #c41e3a;
+            height: 40px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .content-wrapper {
+            display: flex;
+            gap: 20px;
+        }
+
+        .photo-section {
+            background: white;
+            padding: 20px;
+            border-radius: 4px;
+            border: 1px solid #d0d0d0;
+            width: 350px;
+            flex-shrink: 0;
+        }
+
+        .photo-header {
+            color: #0066cc;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .photo-container {
+            background-color: #e8e8e8;
+            padding: 20px;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .photo-placeholder {
+            width: 150px;
+            height: 180px;
+            background-color: white;
+            border: 1px solid #ddd;
+            margin: 0 auto 10px;
+            overflow: hidden;
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .name-label {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .info-section {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 4px;
+            border: 1px solid #d0d0d0;
+        }
+
+        .table-container {
+            border: 1px solid #d0d0d0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+            background-color: #d9e3f0;
+        }
+
+        .info-row {
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            border: 1px dashed #d0d0d0;
+            border-radius: 4px;
+            background-color: white;
+        }
+
+        .info-label {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            font-size: 14px;
+            color: #333;
+            font-weight: 400;
+        }
+
+        .search-bar {
+            background-color: #d9e3f0;
+            padding: 12px 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            flex-wrap: wrap; 
+            gap: 15px; 
+        }
+
+        .search-group-connected {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            min-width: 280px; 
+        }
+
+
+        .search-group-connected .search-icon-btn {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: none;
+            margin-right: 0;
+            height: 38px; 
+            display: flex;
+            align-items: center;
+        }
+
+        .search-group-connected .search-input {
+            border-radius: 0;
+            height: 38px;
+            border-left: 1px solid #ccc; 
+            border-right: none;
+            margin: 0;
+            width: 100%;
+        }
+        
+        .search-group-connected .search-input:focus {
+            z-index: 2;
+            position: relative;
+        }
+
+        .search-group-connected .go-button {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            height: 38px;
+            margin-left: 0;
+            border-left: 1px solid #999; 
+        }
+
+        .search-icon-btn {
+            background-color: white;
+            border: 1px solid #999;
+            padding: 0 16px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .search-dropdown {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            background: white;
+            border: 1px solid #999;
+            border-radius: 3px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1000;
+            min-width: 200px;
+            display: none;
+        }
+
+        .search-dropdown.active {
+            display: block;
+        }
+
+        .dropdown-header {
+            background-color: #c41e3a;
+            color: white;
+            padding: 12px 15px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .dropdown-item {
+            padding: 12px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f5f5f5;
+        }
+
+        .search-input {
+            padding: 8px 12px;
+            border: 1px solid #999;
+            border-radius: 3px;
+            font-size: 14px;
+            flex: 1;
+        }
+
+        .search-icon-btn:hover,
+        .go-button:hover,
+        .actions-button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .search-icon-btn:active,
+        .go-button:active,
+        .actions-button:active {
+            background-color: #e0e0e0;
+            transform: translateY(1px);
+        }
+
+        .go-button {
+            background-color: white;
+            border: 1px solid #999;
+            padding: 0 20px;
+            border-radius: 8px; 
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .actions-button {
+            background-color: white;
+            border: 1px solid #999;
+            padding: 0 16px;
+            height: 38px; 
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 100px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0px;
+            background: white;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #e8f2f7;
+            border-top: 1px solid #d0d0d0;
+        }
+
+        th {
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #0066cc;
+            font-size: 13px;
+            border-bottom: 1px solid #d0d0d0;
+            border-right: 1px solid #d0d0d0;
+        }
+
+        th:last-child {
+            border-right: none;
+        }
+
+        td {
+            padding: 15px 12px;
+            border-bottom: 1px solid #d0d0d0;
+            border-right: 1px solid #d0d0d0;
+            font-size: 13px;
+            color: #333;
+        }
+
+        td:last-child {
+            border-right: none;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:last-child td:first-child {
+            border-bottom-left-radius: 0px;
+        }
+
+        tbody tr:last-child td:last-child {
+            border-bottom-right-radius: 0px;
+        }
+
+        tr:hover {
+            background-color: #fafafa;
+        }
+
+        .dropdown-icon::after {
+            content: "";
+            font-size: 10px;
+        }
+
+        .pagination {
+            text-align: right;
+            padding: 10px 12px;
+            font-size: 13px;
+            color: #666;
+            background: white;
+            border-top: 1px solid #d0d0d0;
+            border-radius: 0 0 8px 8px;
+        }
+
+        /* 響應式設計 - 手機模式 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .photo-section {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .info-section {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            .search-bar {
+                padding: 10px;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-group-connected {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .actions-button {
+                width: 100%; 
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 8px 6px;
+                font-size: 12px;
+            }
+
+            /* 表格水平滾動 */
+            .table-container {
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 10px 15px;
+            }
+
+            .logo-icon {
+                height: 40px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .info-row {
+                padding: 12px 15px;
+                margin-bottom: 10px;
+            }
+
+            .info-label {
+                font-size: 10px;
+            }
+
+            .info-value {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .go-button {
+                display: none;
+            }
+        }
+
+
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchBtn = document.querySelector('.search-icon-btn');
+            const searchDropdown = document.getElementById('searchDropdown');
+            let selectedColumn = 'All Columns';
+
+            // 切換下拉選單
+            searchBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                searchDropdown.classList.toggle('active');
+            });
+
+            // 選擇搜尋欄位
+            const dropdownItems = document.querySelectorAll('.dropdown-item');
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    selectedColumn = this.textContent;
+                    searchDropdown.classList.remove('active');
+                    console.log('Selected column:', selectedColumn);
+                });
+            });
+
+            // 點擊外部關閉選單
+            document.addEventListener('click', function(e) {
+                if (!searchBtn.contains(e.target) && !searchDropdown.contains(e.target)) {
+                    searchDropdown.classList.remove('active');
+                }
+            });
+
+            // Go 按鈕
+            const goBtn = document.querySelector('.go-button');
+            goBtn.addEventListener('click', function() {
+                const searchInput = document.querySelector('.search-input');
+                console.log('Searching in', selectedColumn, 'for:', searchInput.value);
+            });
+
+            // Actions 按鈕
+            const actionsBtn = document.querySelector('.actions-button');
+            actionsBtn.addEventListener('click', function() {
+                alert('Actions menu clicked');
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="ucsi-logo.jpg" alt="UCSI Logo" class="logo-icon" onerror="this.style.display='none'">
+        </div>
+        <a href="#" class="enrollment-link">Enrollment Job List</a>
+    </div>
+
+    <div class="red-bar"></div>
+
+    <div class="container">
+        <h1>Examination Token</h1>
+
+        <div class="content-wrapper">
+            <div class="photo-section">
+                <div class="photo-header">Photo</div>
+                <div class="photo-container">
+                    <div class="photo-placeholder">
+                        <img src="student-photo.jpg" alt="Student Photo" style="width: 150px; height: 180px; object-fit: cover;">
+                    </div>
+                    <div class="name-label">Name: <strong>Hou Boqian</strong></div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <div class="info-row">
+                    <div class="info-label">Student Name</div>
+                    <div class="info-value">Hou Boqian</div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-label">Student Number</div>
+                    <div class="info-value">1002476840</div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-label">Semester</div>
+                    <div class="info-value">2025-09</div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-label">Fee Owing</div>
+                    <div class="info-value">RM 0</div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-label">Department</div>
+                    <div class="info-value">Department of Mass Communication</div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-label">Faculty Name</div>
+                    <div class="info-value">Faculty of Social Sciences and Liberal Arts</div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-label">Programme Name</div>
+                    <div class="info-value">Bachelor of Arts (Hons) in Mass Communication</div>
+                </div>
+
+                <div class="table-container">
+                    <div class="search-bar">
+                        
+                        <div class="search-group-connected">
+                            <button class="search-icon-btn">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                <div class="search-dropdown" id="searchDropdown">
+                                    <div class="dropdown-header">All Columns</div>
+                                    <div class="dropdown-item">Subject Name</div>
+                                    <div class="dropdown-item">Subject Code</div>
+                                    <div class="dropdown-item">Exam Schedule</div>
+                                    <div class="dropdown-item">Venue</div>
+                                </div>
+                            </button>
+                            <input type="text" class="search-input" placeholder="">
+                            <button class="go-button">Go</button>
+                        </div>
+
+                        <button class="actions-button">Actions 
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </button>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Subject Code</th>
+                                <th>Exam Schedule</th>
+                                <th>Venue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bahasa Melayu Komunikasi 3</td>
+                                <td>MPU3143</td>
+                                <td>06-JAN-2026 02:30PM</td>
+                                <td>DETSAR / Examination Hall</td>
+                            </tr>
+                            <tr>
+                                <td>Alternative Voices & Issues In Mass Communication</td>
+                                <td>SM210</td>
+                                <td>04-JAN-2026 10:00AM</td>
+                                <td>DETSAR / Examination Hall</td>
+                            </tr>
+                            <tr>
+                                <td>Introduction To Public Relations</td>
+                                <td>SM108</td>
+                                <td>07-JAN-2026 10:00AM</td>
+                                <td>DETSAR / Examination Hall</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination">1 - 3</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
