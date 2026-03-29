@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplementary Examination Token</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font APEX -->
+    <link rel="stylesheet"
+        href="https://static.oracle.com/cdn/apex/21.2.0/libraries/font-apex/2.1/css/font-apex.min.css"
+        crossorigin="anonymous" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        }
+
+        body {
+            background-color: #f7f9fc;
+            /* Light background behind everything if necessary, or just white */
+            color: #333;
+            font-size: 13px;
+        }
+
+        /* --- Global Header --- */
+        .page-header {
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo img {
+            height: 36px;
+        }
+
+        .header-icon {
+            /* font-size: 18px; */
+            color: #555;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .header-red-bar {
+            background-color: #c91f37;
+            height: 36px;
+            width: 100%;
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            padding: 16px;
+            max-width: 480px;
+            /* Suitable for mobile screenshot */
+            margin: 0 auto;
+        }
+
+        h1.page-title {
+            font-size: 22px;
+            font-weight: 550;
+            color: #111;
+            margin-bottom: 16px;
+            letter-spacing: -0.2px;
+        }
+
+        /* --- Outer Card Container --- */
+        .card-container {
+            background: #f7fafa;
+            /* very slight shade or white */
+            border: 1px solid #d3d9df;
+            border-radius: 6px;
+            padding: 12px;
+        }
+
+        /* --- Photo Section --- */
+        .photo-section {
+            border: 1px solid #d3d9df;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .photo-header {
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: #337ab7;
+            padding: 8px;
+            background: #fff;
+            border-bottom: 1px solid #d3d9df;
+        }
+
+        .photo-body {
+            background: #eaedef;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .photo-body img {
+            width: 100px;
+            height: 125px;
+            object-fit: cover;
+            border: 1px solid #b5bdc4;
+            padding: 2px;
+            background: #fff;
+            display: block;
+            margin: 0 auto 12px auto;
+        }
+
+        .photo-body .name-text {
+            font-size: 12px;
+            color: #333;
+        }
+
+        .photo-body .name-text b {
+            color: #000;
+        }
+
+        /* --- Details Section (Forms) --- */
+        .details-section {
+            background: #fff;
+            border: 1px solid #d3d9df;
+            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 16px;
+        }
+
+        .form-field {
+            border: 1px dashed #baccdd;
+            padding: 8px 12px;
+            margin-bottom: 12px;
+            border-radius: 2px;
+            background: #fff;
+        }
+
+        .form-field:last-child {
+            margin-bottom: 0px;
+        }
+
+        .field-label {
+            font-size: 10px;
+            color: #777;
+            margin-bottom: 2px;
+        }
+
+        .field-value {
+            font-size: 13px;
+            color: #111;
+            font-weight: 400;
+            /* Normal weight for these per screenshot */
+        }
+
+        /* --- Interactive Report Section --- */
+        .ir-section {
+            background: #d4dfe8;
+            /* Distinct blue-grey background */
+            border-radius: 6px;
+            padding: 10px;
+            border: 1px solid #c2d0dc;
+        }
+
+        .ir-toolbar {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        /* Search input group row */
+        .search-row {
+            display: flex;
+            height: 32px;
+        }
+
+        .search-btn-left {
+            border: 1px solid #b8c6d3;
+            background: #fdfdfd;
+            border-radius: 4px 0 0 4px;
+            border-right: none;
+            padding: 0 10px;
+            color: #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .search-input {
+            flex: 1;
+            border: 1px solid #b8c6d3;
+            border-left: none;
+            border-right: none;
+            background: #e8eef4;
+            padding: 0 8px;
+            font-size: 12px;
+            color: #333;
+            outline: none;
+            min-width: 0;
+        }
+
+        .search-btn-right {
+            border: 1px solid #b8c6d3;
+            background: #fdfdfd;
+            border-radius: 0 4px 4px 0;
+            border-left: none;
+            padding: 0 14px;
+            font-weight: bold;
+            font-size: 12px;
+            color: #000;
+            cursor: pointer;
+        }
+
+        /* Actions button row */
+        .actions-btn {
+            border: 1px solid #b8c6d3;
+            background: #fdfdfd;
+            border-radius: 4px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #333;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .actions-btn:hover {
+            background: #f0f4f8;
+        }
+
+        .actions-menu {
+            display: none;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            margin-top: 4px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .actions-menu.active {
+            display: block;
+        }
+
+        .actions-menu-item {
+            padding: 8px 12px;
+            font-size: 12px;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .actions-menu-item:hover {
+            background-color: #f5f5f5;
+        }
+
+        .actions-menu-item.highlight {
+            background-color: #c91f37;
+            color: #fff;
+        }
+
+        .actions-menu-item.highlight:hover {
+            background-color: #a7182d;
+        }
+
+        .menu-separator {
+            height: 1px;
+            background: #eee;
+            margin: 4px 0;
+        }
+
+        /* Table */
+        .table-container {
+            background: #fff;
+            border: 1px solid #b8c6d3;
+            overflow-x: auto;
+            border-radius: 2px;
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th {
+            padding: 8px 4px;
+            font-size: 11px;
+            color: #337ab7;
+            font-weight: bold;
+            border-bottom: 1px solid #e0e8f0;
+            border-right: 1px solid #e0e8f0;
+            background: #fff;
+            vertical-align: middle;
+            line-height: 1.3;
+        }
+
+        th:last-child {
+            border-right: none;
+        }
+
+        td {
+            padding: 8px 6px;
+            font-size: 11px;
+            color: #000;
+            border-bottom: 1px solid #e0e8f0;
+            border-right: 1px solid #e0e8f0;
+            vertical-align: middle;
+        }
+
+        td:first-child {
+            text-align: left;
+            /* Corporate Finance seems left-aligned in screenshot */
+        }
+
+        td:last-child {
+            border-right: none;
+        }
+
+        .pagination {
+            text-align: right;
+            font-size: 11px;
+            color: #555;
+            padding: 8px 12px;
+            background: #fff;
+            border-top: 1px solid #e0e8f0;
+        }
+
+        .page-footer {
+            text-align: center;
+            padding: 32px 16px 24px;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .field-value a[href^="tel"] {
+            color: #337ab7;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const actionsBtn = document.querySelector('.actions-btn');
+            const actionsMenu = document.getElementById('actionsMenu');
+
+            actionsBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                actionsMenu.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!actionsBtn.contains(e.target) && !actionsMenu.contains(e.target)) {
+                    actionsMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <!-- Header Area -->
+    <header class="page-header">
+        <div class="header-logo">
+            <img src="ucsilogo.png" alt="UCSI University" onerror="this.src=''; this.alt='UCSI University'">
+        </div>
+        <div class="header-icon">
+            <i class="fa fa-file-chart" aria-hidden="true" style="font-size: 18px;"></i>
+        </div>
+    </header>
+    <div class="header-red-bar"></div>
+
+    <!-- Main Mobile Content Area -->
+    <div class="main-content">
+        <h1 class="page-title">Examination Token</h1>
+
+        <!-- Outer Border Container -->
+        <div class="card-container">
+
+            <!-- Photo Report -->
+            <div class="photo-section">
+                <div class="photo-header">Photo</div>
+                <div class="photo-body">
+                    <img src="songying.jpeg" alt="Song Ying" onerror="this.src=''; this.style.display='none';">
+                    <div class="name-text">Name: <b>Song Ying</b></div>
+                </div>
+            </div>
+
+            <!-- Forms Details -->
+            <div class="details-section">
+                <div class="form-field">
+                    <div class="field-label">Student Name</div>
+                    <div class="field-value">Song Ying</div>
+                </div>
+                <div class="form-field">
+                    <div class="field-label">Student Number</div>
+                    <div class="field-value">1002371745</div>
+                </div>
+                <div class="form-field">
+                    <div class="field-label">Semester</div>
+                    <div class="field-value">2026-01</div>
+                </div>
+                <div class="form-field">
+                    <div class="field-label">Fee Owing</div>
+                    <div class="field-value">RM 0</div>
+                </div>
+                <div class="form-field">
+                    <div class="field-label">Department</div>
+                    <div class="field-value">Department of Management Studies</div>
+                </div>
+                <div class="form-field">
+                    <div class="field-label">Faculty Name</div>
+                    <div class="field-value">Faculty of Business and Management</div>
+                </div>
+                <div class="form-field">
+                    <div class="field-label">Programme Name</div>
+                    <div class="field-value">Bachelor of Arts (Hons) in Business Administration</div>
+                </div>
+            </div>
+
+            <!-- Table / IR Report -->
+            <div class="ir-section">
+
+                <div class="ir-toolbar">
+                    <div class="search-row">
+                        <button class="search-btn-left">
+                            <i class="fa fa-magnifying-glass" style="font-size: 13px;"></i>
+                            <i class="fa fa-angle-down" style="font-size: 10px;"></i>
+                        </button>
+                        <input type="text" class="search-input" value="">
+                        <button class="search-btn-right">Go</button>
+                    </div>
+                    <!-- Actions button -->
+                    <div>
+                        <button class="actions-btn">
+                            Actions <i class="fa fa-angle-down" style="font-size: 10px;"></i>
+                        </button>
+                        <div class="actions-menu" id="actionsMenu">
+                            <div class="actions-menu-item highlight">
+                                <i class="fa fa-table-columns" style="width: 16px; text-align: center;"></i> Select
+                                Columns
+                            </div>
+                            <div class="menu-separator"></div>
+                            <div class="actions-menu-item">
+                                <i class="fa fa-filter" style="width: 16px; text-align: center;"></i> Filter
+                            </div>
+                            <div class="actions-menu-item">
+                                <i class="fa fa-list-ol" style="width: 16px; text-align: center;"></i> Rows Per Page
+                            </div>
+                            <div class="menu-separator"></div>
+                            <div class="actions-menu-item">
+                                <i class="fa fa-download" style="width: 16px; text-align: center;"></i> Download
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Subject<br>Name</th>
+                                <th>Subject<br>Code</th>
+                                <!-- <th>Study<br>Intake</th> -->
+                                <th>Exam<br>Schedule</th>
+                                <th>Venue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Organizational<br>Development<br>and Change</td>
+                                <td>BBB3043</td>
+                                <td style="text-align: left;">31-MAR--<br>2026<br>02:30PM</td>
+                                <td style="text-align: left;">DETSAR /<br>Examination<br>Hall</td>
+                            </tr>
+                            <tr>
+
+                                <td>Strategic<br>Management</td>
+                                <td>BBB3033</td>
+                                <td style="text-align: left;">01-APR-<br>2026<br>09:30AM</td>
+                                <td style="text-align: left;">DETSAR /<br>Examination<br>Hall</td>
+
+                            </tr>
+                            <tr>
+                                <td>Business<br>Information<br>System</td>
+                                <td>BBB1063</td>
+                                <td style="text-align: left;">31-MAR-<br>2026<br>09:30AM</td>
+                                <td style="text-align: left;">DETSAR /<br>Examination<br>Hall</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination">
+                        1 - 3
+                    </div>
+                </div>
+
+            </div>
+
+        </div> <!-- /.card-container -->
+    </div>
+
+    <div class="page-footer">
+        IISV2.20220222
+    </div>
+
+</body>
+
+</html>
