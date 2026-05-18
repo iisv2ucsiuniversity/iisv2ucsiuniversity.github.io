@@ -8,40 +8,6 @@
     <!-- Icons via local Font APEX (bundled fonts, no CDN) -->
     <link rel="stylesheet" href="css/font-apex.min.css" />
     <style>
-        /*
-         * Same HTML classes as Universal Theme (.a-Icon.icon-search / .icon-menu-drop-down).
-         * Bundled font-apex.min.css maps glyphs via .fa-* using \\f002 (search) and \\f107 (angle-down).
-         * Live UT Core.min.css uses \\e022 / \\e0c2 — those slots may differ in this font build; use \\f* so icons render.
-         */
-        .a-Icon {
-            font-style: normal;
-            font-weight: normal;
-            font-variant: normal;
-            text-transform: none;
-            text-rendering: auto;
-            line-height: 1;
-            display: inline-block;
-            vertical-align: baseline;
-            position: relative;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .a-Icon:before {
-            display: inline-block;
-            vertical-align: top;
-            font-family: 'Font APEX Small', sans-serif !important;
-            font-size: inherit;
-        }
-
-        .a-Icon.icon-search:before {
-            content: "\f002";
-        }
-
-        .a-Icon.icon-menu-drop-down:before {
-            content: "\f107";
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -218,17 +184,25 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 2px;
+            gap: 4px;
             cursor: pointer;
         }
 
-        /* EDIT icon sizes: matches IRR column-search proportions vs caret */
-        .search-btn-left .a-Icon.icon-search:before {
-            font-size: 16px;
+        /* IRR toolbar: stroke SVGs — EDIT width/height to scale icons */
+        .ir-icon-svg {
+            display: block;
+            flex-shrink: 0;
+            color: inherit;
         }
 
-        .search-btn-left .a-Icon.icon-menu-drop-down:before {
-            font-size: 11px;
+        .ir-icon-svg--search {
+            width: 14px;
+            height: 14px;
+        }
+
+        .ir-icon-svg--chevron-down {
+            width: 10px;
+            height: 10px;
         }
 
         .search-input {
@@ -274,10 +248,6 @@
 
         .actions-btn:hover {
             background: #f0f4f8;
-        }
-
-        .actions-btn .a-Icon.icon-menu-drop-down:before {
-            font-size: 10px;
         }
 
         .actions-menu {
@@ -483,10 +453,20 @@
 
                     <div class="ir-toolbar">
                         <div class="search-row">
-                            <!-- Same markup as live page: apex.interactiveReport column-search button -->
                             <button class="search-btn-left" type="button">
-                                <span class="a-Icon icon-search" aria-hidden="true"></span><span
-                                    class="a-Icon icon-menu-drop-down" aria-hidden="true"></span>
+                                <!-- Search SVG: EDIT stroke-width; circle r/cx/cy; path L end = longer/shorter handle -->
+                                <svg class="ir-icon-svg ir-icon-svg--search" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <circle cx="11" cy="11" r="8" />
+                                    <path d="M16.657 16.657 L23.85 23.85" />
+                                </svg>
+                                <!-- Chevron: EDIT stroke-width or path -->
+                                <svg class="ir-icon-svg ir-icon-svg--chevron-down" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
                             </button>
                             <input type="text" class="search-input" value="">
                             <button class="search-btn-right">Go</button>
@@ -494,7 +474,12 @@
                         <!-- Actions button -->
                         <div>
                             <button class="actions-btn">
-                                Actions<span class="a-Icon icon-menu-drop-down" aria-hidden="true"></span>
+                                Actions
+                                <svg class="ir-icon-svg ir-icon-svg--chevron-down" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
                             </button>
                             <div class="actions-menu" id="actionsMenu">
                                 <div class="actions-menu-item highlight">
