@@ -65,20 +65,34 @@
             letter-spacing: -0.2px;
         }
 
-        /* --- Outer Card Container --- */
+        /* Overall chrome around token content (matches earlier nested card look, single outer frame) */
         .card-container {
             background: #f7fafa;
-            /* very slight shade or white */
             border: 1px solid #d3d9df;
             border-radius: 6px;
             padding: 12px;
+        }
+
+        /* Vertical stack inside outer card */
+        .token-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Extra frame drawn only around the Photo region */
+        .photo-section-wrap {
+            border: 1px solid #c5cfda;
+            border-radius: 6px;
+            padding: 16px;
+            background: rgba(247, 250, 252);
         }
 
         /* --- Photo Section --- */
         .photo-section {
             border: 1px solid #d3d9df;
             border-radius: 4px;
-            margin-bottom: 16px;
+            margin-bottom: 0;
             overflow: hidden;
         }
 
@@ -126,7 +140,7 @@
             border: 1px solid #d3d9df;
             border-radius: 4px;
             padding: 14px 14px 16px;
-            margin-bottom: 16px;
+            margin-bottom: 0;
         }
 
         .form-field {
@@ -134,7 +148,7 @@
             padding: 10px 14px;
             margin-bottom: 18px;
             border-radius: 2px;
-            background: rgba(251, 252, 253);
+            background: rgba(247, 250, 252);
         }
 
         .form-field:last-child {
@@ -407,19 +421,20 @@
 
     <!-- Main Mobile Content Area -->
     <div class="main-content">
-        <h1 class="page-title">Examination Token</h1>
+        <h1 class="page-title">Supplementary Examination Token</h1>
 
-        <!-- Outer Border Container -->
         <div class="card-container">
-            <div class="card-container">
+        <div class="token-layout">
 
                 <!-- Photo Report -->
+                <div class="photo-section-wrap">
                 <div class="photo-section">
                     <div class="photo-header">Photo</div>
                     <div class="photo-body">
                         <img src="songying.jpeg" alt="songying" onerror="this.src=''; this.style.display='none';">
                         <div class="name-text">Name: <b>Li Chen</b></div>
                     </div>
+                </div>
                 </div>
 
                 <!-- Forms Details -->
@@ -526,20 +541,20 @@
                                     <td></td>
                                     <td></td>
                                 </tr>
-                                <!-- <tr>
-
+                                <!--
+                                <tr>
                                     <td>International<br>Business</td>
                                     <td>BBB3023</td>
                                     <td style="text-align: left;">01-APR-<br>2026<br>09:30AM</td>
                                     <td style="text-align: left;">DETSAR /<br>Examination<br>Hall</td>
-
                                 </tr>
                                 <tr>
                                     <td>Services<br>Marketing</td>
                                     <td>BBM3063</td>
                                     <td style="text-align: left;">01-APR-<br>2026<br>09:30AM</td>
-                                    <td style="text-align: left;">DETSAR /<br>Examination<br>Hall</td> -->
+                                    <td style="text-align: left;">DETSAR /<br>Examination<br>Hall</td>
                                 </tr>
+                                -->
                             </tbody>
                         </table>
                         <div class="pagination">
@@ -549,8 +564,8 @@
 
                 </div>
 
-            </div>
-        </div> <!-- /.card-container -->
+        </div>
+        </div>
     </div>
 
     <div class="page-footer">
