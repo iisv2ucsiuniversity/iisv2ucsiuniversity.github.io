@@ -5,14 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supplementary Examination Token</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Font APEX -->
-    <link rel="stylesheet"
-        href="https://static.oracle.com/cdn/apex/21.2.0/libraries/font-apex/2.1/css/font-apex.min.css"
-        crossorigin="anonymous" />
+    <!-- Icons via local Font APEX (bundled fonts, no CDN) -->
+    <link rel="stylesheet" href="css/font-apex.min.css" />
     <style>
+        /*
+         * Same HTML classes as Universal Theme (.a-Icon.icon-search / .icon-menu-drop-down).
+         * Bundled font-apex.min.css maps glyphs via .fa-* using \\f002 (search) and \\f107 (angle-down).
+         * Live UT Core.min.css uses \\e022 / \\e0c2 — those slots may differ in this font build; use \\f* so icons render.
+         */
+        .a-Icon {
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            text-rendering: auto;
+            line-height: 1;
+            display: inline-block;
+            vertical-align: baseline;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .a-Icon:before {
+            display: inline-block;
+            vertical-align: top;
+            font-family: 'Font APEX Small', sans-serif !important;
+            font-size: inherit;
+        }
+
+        .a-Icon.icon-search:before {
+            content: "\f002";
+        }
+
+        .a-Icon.icon-menu-drop-down:before {
+            content: "\f107";
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -93,7 +122,7 @@
             font-weight: bold;
             color: #337ab7;
             padding: 8px;
-            background: #fff;
+            background: rgba(247, 250, 252);
             border-bottom: 1px solid #d3d9df;
         }
 
@@ -125,7 +154,7 @@
 
         /* --- Details Section (Forms) --- */
         .details-section {
-            background: #fff;
+            background: rgba(247, 250, 252);
             border: 1px solid #d3d9df;
             border-radius: 4px;
             padding: 12px;
@@ -137,7 +166,7 @@
             padding: 8px 12px;
             margin-bottom: 12px;
             border-radius: 2px;
-            background: #fff;
+            background: rgba(251, 252, 253);
         }
 
         .form-field:last-child {
@@ -189,8 +218,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 4px;
+            gap: 2px;
             cursor: pointer;
+        }
+
+        /* EDIT icon sizes: matches IRR column-search proportions vs caret */
+        .search-btn-left .a-Icon.icon-search:before {
+            font-size: 16px;
+        }
+
+        .search-btn-left .a-Icon.icon-menu-drop-down:before {
+            font-size: 11px;
         }
 
         .search-input {
@@ -236,6 +274,10 @@
 
         .actions-btn:hover {
             background: #f0f4f8;
+        }
+
+        .actions-btn .a-Icon.icon-menu-drop-down:before {
+            font-size: 10px;
         }
 
         .actions-menu {
@@ -307,6 +349,7 @@
             background: #fff;
             vertical-align: middle;
             line-height: 1.3;
+            background-color: rgba(240, 245, 249);
         }
 
         th:last-child {
@@ -320,10 +363,12 @@
             border-bottom: 1px solid #e0e8f0;
             border-right: 1px solid #e0e8f0;
             vertical-align: middle;
+            background-color: rgba(247, 250, 252);
         }
 
         td:first-child {
             text-align: left;
+            padding-left: 16px;
             /* Corporate Finance seems left-aligned in screenshot */
         }
 
@@ -336,7 +381,7 @@
             font-size: 11px;
             color: #555;
             padding: 8px 12px;
-            background: #fff;
+            background: rgba(247, 250, 252);
             border-top: 1px solid #e0e8f0;
         }
 
@@ -386,7 +431,7 @@
 
     <!-- Main Mobile Content Area -->
     <div class="main-content">
-        <h1 class="page-title">Supplementary Examination Token</h1>
+        <h1 class="page-title">Examination Token</h1>
 
         <!-- Outer Border Container -->
         <div class="card-container">
@@ -396,8 +441,8 @@
                 <div class="photo-section">
                     <div class="photo-header">Photo</div>
                     <div class="photo-body">
-                        <img src="songying.jpeg" alt="Song Ying" onerror="this.src=''; this.style.display='none';">
-                        <div class="name-text">Name: <b>Li Chen</b></div>
+                        <img src="songying.jpeg" alt="songying" onerror="this.src=''; this.style.display='none';">
+                        <div class="name-text">Name:<b>Li Chen </b></div>
                     </div>
                 </div>
 
@@ -438,9 +483,10 @@
 
                     <div class="ir-toolbar">
                         <div class="search-row">
-                            <button class="search-btn-left">
-                                <i class="fa fa-magnifying-glass" style="font-size: 13px;"></i>
-                                <i class="fa fa-angle-down" style="font-size: 10px;"></i>
+                            <!-- Same markup as live page: apex.interactiveReport column-search button -->
+                            <button class="search-btn-left" type="button">
+                                <span class="a-Icon icon-search" aria-hidden="true"></span><span
+                                    class="a-Icon icon-menu-drop-down" aria-hidden="true"></span>
                             </button>
                             <input type="text" class="search-input" value="">
                             <button class="search-btn-right">Go</button>
@@ -448,11 +494,11 @@
                         <!-- Actions button -->
                         <div>
                             <button class="actions-btn">
-                                Actions <i class="fa fa-angle-down" style="font-size: 10px;"></i>
+                                Actions<span class="a-Icon icon-menu-drop-down" aria-hidden="true"></span>
                             </button>
                             <div class="actions-menu" id="actionsMenu">
                                 <div class="actions-menu-item highlight">
-                                    <i class="fa fa-table-columns" style="width: 16px; text-align: center;"></i> Select
+                                    <i class="fa fa-columns" style="width: 16px; text-align: center;"></i> Select
                                     Columns
                                 </div>
                                 <div class="menu-separator"></div>
@@ -474,7 +520,7 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Subject<br>Name</th>
+                                    <th>Subject Name</th>
                                     <th>Subject<br>Code</th>
                                     <th>Study<br>Intake</th>
                                     <th>Exam<br>Schedule</th>
