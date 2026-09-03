@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supplementary Examination Token</title>
+    <title>Student Exam Token - Public Page</title>
     <!-- Icons via local Font APEX (bundled fonts, no CDN) -->
     <link rel="stylesheet" href="css/font-apex.min.css" />
     <style>
@@ -386,22 +386,211 @@
             color: #337ab7;
             text-decoration: none;
         }
+
+
+        /* --- Mobile sliding header --- */
+        .header-shell {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.28s ease;
+            will-change: transform;
+        }
+
+        .header-shell.header-hidden {
+            transform: translateY(-100%);
+        }
+
+        /* --- Footer back-to-top button --- */
+        .footer-topButton {
+            width: 36px;
+            height: 36px;
+
+            margin: 10px auto 0;
+
+            border: 1px solid #d9d9d9;
+            border-radius: 50%;
+
+            background: #fff;
+            color: #999;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .footer-topButton:hover {
+            background: #f5f5f5;
+            color: #666;
+        }
+
+        .footer-topButton:focus-visible {
+            outline: 2px solid #c91f37;
+            outline-offset: 2px;
+        }
+
+        /* Header sliding only happens on mobile */
+        @media (min-width: 769px) {
+            .header-shell {
+                position: static;
+                transform: none !important;
+            }
+        }
+
+        /* @media (prefers-reduced-motion: reduce) {
+            .header-shell {
+                transition: none;
+            }
+        } */
+
+
+
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+
+            /* ==============================
+            Actions menu
+            ============================== */
+
             const actionsBtn = document.querySelector('.actions-btn');
             const actionsMenu = document.getElementById('actionsMenu');
 
-            actionsBtn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                actionsMenu.classList.toggle('active');
+            if (actionsBtn && actionsMenu) {
+
+                actionsBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    actionsMenu.classList.toggle('active');
+                });
+
+                document.addEventListener('click', function (e) {
+                    if (
+                        !actionsBtn.contains(e.target) &&
+                        !actionsMenu.contains(e.target)
+                    ) {
+                        actionsMenu.classList.remove('active');
+                    }
+                });
+            }
+
+
+            /* ==============================
+            Mobile header animation
+            
+            Scroll down = hide
+            Scroll up   = show
+            ============================== */
+
+            const headerShell = document.querySelector('.header-shell');
+
+            let lastScrollY = window.scrollY;
+            let ticking = false;
+
+            function updateHeader() {
+
+                const currentScrollY = window.scrollY;
+
+                const isMobile =
+                    window.matchMedia('(max-width: 768px)').matches;
+
+                const difference =
+                    currentScrollY - lastScrollY;
+
+
+                if (headerShell) {
+
+                    /* Always show header when:
+                    - desktop
+                    - near top of page
+                    */
+                    if (!isMobile || currentScrollY <= 10) {
+
+                        headerShell.classList.remove('header-hidden');
+
+                    }
+
+                    /* Scrolling DOWN */
+                    else if (difference > 5) {
+
+                        headerShell.classList.add('header-hidden');
+
+                    }
+
+                    /* Scrolling UP */
+                    else if (difference < -5) {
+
+                        headerShell.classList.remove('header-hidden');
+
+                    }
+                }
+
+
+                lastScrollY = Math.max(currentScrollY, 0);
+
+                ticking = false;
+            }
+
+
+            window.addEventListener(
+                'scroll',
+                function () {
+
+                    if (!ticking) {
+
+                        window.requestAnimationFrame(updateHeader);
+
+                        ticking = true;
+                    }
+
+                },
+                {
+                    passive: true
+                }
+            );
+
+
+            /* Reset header if screen changes
+            from mobile to desktop
+            */
+
+            window.addEventListener('resize', function () {
+
+                if (
+                    !window.matchMedia('(max-width: 768px)').matches &&
+                    headerShell
+                ) {
+
+                    headerShell.classList.remove('header-hidden');
+
+                }
+
             });
 
-            document.addEventListener('click', function (e) {
-                if (!actionsBtn.contains(e.target) && !actionsMenu.contains(e.target)) {
-                    actionsMenu.classList.remove('active');
-                }
-            });
+
+            /* ==============================
+            Footer back-to-top button
+            ============================== */
+
+            const topButton =
+                document.querySelector('.footer-topButton');
+
+            if (topButton) {
+
+                topButton.addEventListener('click', function () {
+
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+
+                });
+
+            }
+
         });
     </script>
 </head>
@@ -409,19 +598,34 @@
 <body>
 
     <!-- Header Area -->
-    <header class="page-header">
-        <div class="header-logo">
-            <img src="ucsilogo.png" alt="UCSI University" onerror="this.src=''; this.alt='UCSI University'">
-        </div>
-        <div class="header-icon">
-            <i class="fa fa-file-chart" aria-hidden="true" style="font-size: 18px;"></i>
-        </div>
-    </header>
-    <div class="header-red-bar"></div>
+    <div class="header-shell">
+
+        <header class="page-header">
+
+            <div class="header-logo">
+                <img
+                    src="ucsilogo.png"
+                    alt="UCSI University"
+                    onerror="this.src=''; this.alt='UCSI University'">
+            </div>
+
+            <div class="header-icon">
+                <i
+                    class="fa fa-file-chart"
+                    aria-hidden="true"
+                    style="font-size: 18px;">
+                </i>
+            </div>
+
+        </header>
+
+        <div class="header-red-bar"></div>
+
+    </div>
 
     <!-- Main Mobile Content Area -->
     <div class="main-content">
-        <h1 class="page-title">Supplementary Examination Token</h1>
+        <h1 class="page-title">Examination Token</h1>
 
         <div class="card-container">
         <div class="token-layout">
@@ -432,7 +636,7 @@
                     <div class="photo-header">Photo</div>
                     <div class="photo-body">
                         <img src="songying.jpeg" alt="songying" onerror="this.src=''; this.style.display='none';">
-                        <div class="name-text">Name: <b>Li Chen</b></div>
+                        <div class="name-text">Name: <b>Song Ying</b></div>
                     </div>
                 </div>
                 </div>
@@ -441,15 +645,15 @@
                 <div class="details-section">
                     <div class="form-field">
                         <div class="field-label">Student Name</div>
-                        <div class="field-value">Li Chen</div>
+                        <div class="field-value">Song Ying</div>
                     </div>
                     <div class="form-field form-field--student-number">
                         <div class="field-label">Student Number</div>
-                        <div class="field-value">1002577341</div>
+                        <div class="field-value">1002371745</div>
                     </div>
                     <div class="form-field">
                         <div class="field-label">Semester</div>
-                        <div class="field-value">2025-09</div>
+                        <div class="field-value">2026-05</div>
                     </div>
                     <div class="form-field">
                         <div class="field-label">Fee Owing</div>
@@ -457,7 +661,7 @@
                     </div>
                     <div class="form-field">
                         <div class="field-label">Department</div>
-                        <div class="field-value">Department of Marketing</div>
+                        <div class="field-value">Department of Management Studies</div>
                     </div>
                     <div class="form-field">
                         <div class="field-label">Faculty Name</div>
@@ -465,7 +669,7 @@
                     </div>
                     <div class="form-field">
                         <div class="field-label">Programme Name</div>
-                        <div class="field-value">Bachelor of Arts (Honours) Branding and Advertising</div>
+                        <div class="field-value">Bachelor of Arts (Hons) in Business Administration</div>
                     </div>
                 </div>
 
@@ -535,26 +739,47 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Introduction<br>to Digital<br>Marketing</td>
-                                    <td>BBM1073</td>
+                                    <td>Cross-Cultural<br>management</td>
+                                    <td>BBB2063</td>
                                     <td>2025-<br>09</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <!--
-                                <tr>
-                                    <td>International<br>Business</td>
-                                    <td>BBB3023</td>
-                                    <td style="text-align: left;">01-APR-<br>2026<br>09:30AM</td>
+                                    <td style="text-align: left;">11-SEP-<br>2026<br>03:00PM</td>
                                     <td style="text-align: left;">DETSAR /<br>Examination<br>Hall</td>
                                 </tr>
                                 <tr>
-                                    <td>Services<br>Marketing</td>
-                                    <td>BBM3063</td>
-                                    <td style="text-align: left;">01-APR-<br>2026<br>09:30AM</td>
+                                    <td>Company<br>Law</td>
+                                    <td>BBB2013</td>
+                                    <td>2025-<br>09</td>
+                                    <td style="text-align: left;">04-SEP-<br>2026<br>09:30AM</td>
                                     <td style="text-align: left;">DETSAR /<br>Examination<br>Hall</td>
                                 </tr>
-                                -->
+                                <tr>
+                                    <td>Leadership</td>
+                                    <td>BBB3063</td>
+                                    <td>2025-<br>09</td>
+                                    <td style="text-align: left;">07-SEP-<br>2026<br>09:30AM</td>
+                                    <td style="text-align: left;">GBS MPH</td>
+                                </tr>
+                                <tr>
+                                    <td>Retail Brand<br>Management</td>
+                                    <td>BBM3093</td>
+                                    <td>2025-<br>09</td>
+                                    <td style="text-align: left;">10-SEP-<br>2026<br>02:30PM</td>
+                                    <td style="text-align: left;">DETSAR /<br>Examination<br>Hall</td>
+                                </tr>
+                                <tr>
+                                    <td>Contemporary<br>Human Resource<br>Management</td>
+                                    <td>BBB3053</td>
+                                    <td>2025-<br>09</td>
+                                    <td style="text-align: left;">07-SEP-<br>2026<br>02:30PM</td>
+                                    <td style="text-align: left;">C415</td>
+                                </tr>
+                                <tr>
+                                    <td>Business<br>Mathematics</td>
+                                    <td>BBS2303</td>
+                                    <td>2025-<br>09</td>
+                                    <td style="text-align: left;">08-SEP-<br>2026<br>09:30AM</td>
+                                    <td style="text-align: left;">DETSAR /<br>Examination<br>Hall</td>
+                                </tr>
                             </tbody>
                         </table>
                         <div class="pagination">
@@ -569,7 +794,24 @@
     </div>
 
     <div class="page-footer">
-        IISV2.20220222
+
+        <div>
+            IISV2.20220222
+        </div>
+
+        <button
+            class="footer-topButton"
+            type="button"
+            aria-label="Back to top"
+            title="Back to top">
+
+            <i
+                class="fa fa-chevron-up"
+                aria-hidden="true">
+            </i>
+
+        </button>
+
     </div>
 
 </body>
