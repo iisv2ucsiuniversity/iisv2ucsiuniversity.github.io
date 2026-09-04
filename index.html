@@ -33,7 +33,7 @@
         }
 
         .header-logo img {
-            height: 36px;
+            height: 48px;
         }
 
         .header-icon {
@@ -449,6 +449,19 @@
 
 
 
+
+        /* --- IR toolbar grey only; table remains white below --- */
+        .ir-section {
+            margin-bottom: 0;
+            border-radius: 6px 6px 0 0;
+            border-bottom: none;
+        }
+
+        .table-container {
+            margin-top: 0;
+            border-radius: 0 0 6px 6px;
+        }
+
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -671,17 +684,16 @@
                         <div class="field-label">Programme Name</div>
                         <div class="field-value">Bachelor of Arts (Hons) in Business Administration</div>
                     </div>
-                </div>
-
-                <!-- Table / IR Report -->
-                <div class="ir-section">
+                    
+                    <!-- Table / IR Report -->
+                    <div class="ir-section">
 
                     <div class="ir-toolbar">
                         <div class="search-row">
                             <button class="search-btn-left" type="button">
                                 <!-- Search SVG: EDIT stroke-width; circle r/cx/cy; path L end = longer/shorter handle -->
                                 <svg class="ir-icon-svg ir-icon-svg--search" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <circle cx="11" cy="11" r="8" />
                                     <path d="M16.657 16.657 L23.85 23.85" />
@@ -724,6 +736,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
 
                     <div class="table-container">
