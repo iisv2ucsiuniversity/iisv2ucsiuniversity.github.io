@@ -33,7 +33,7 @@
         }
 
         .header-logo img {
-            height: 36px;
+            height: 48px;
         }
 
         .header-icon {
@@ -450,17 +450,15 @@
 
 
 
-        /* --- Combined student-info + report design --- */
-        .details-section .ir-section {
-            margin-top: 0;
+        /* --- IR toolbar grey only; table remains white below --- */
+        .ir-section {
             margin-bottom: 0;
             border-radius: 6px 6px 0 0;
             border-bottom: none;
         }
 
-        .details-section .table-container {
+        .table-container {
             margin-top: 0;
-            margin-bottom: 0;
             border-radius: 0 0 6px 6px;
         }
 
@@ -650,8 +648,8 @@
                 <div class="photo-section">
                     <div class="photo-header">Photo</div>
                     <div class="photo-body">
-                        <img src="mengkang.jpeg" alt="songying" onerror="this.src=''; this.style.display='none';">
-                        <div class="name-text">Name: <b>Meng Kang</b></div>
+                        <img src="songying.jpeg" alt="songying" onerror="this.src=''; this.style.display='none';">
+                        <div class="name-text">Name: <b>Song Ying</b></div>
                     </div>
                 </div>
                 </div>
@@ -660,11 +658,11 @@
                 <div class="details-section">
                     <div class="form-field">
                         <div class="field-label">Student Name</div>
-                        <div class="field-value">Meng Kang</div>
+                        <div class="field-value">Song Ying</div>
                     </div>
                     <div class="form-field form-field--student-number">
                         <div class="field-label">Student Number</div>
-                        <div class="field-value">1002372426</div>
+                        <div class="field-value">1002371745</div>
                     </div>
                     <div class="form-field">
                         <div class="field-label">Semester</div>
@@ -686,16 +684,16 @@
                         <div class="field-label">Programme Name</div>
                         <div class="field-value">Bachelor of Arts (Hons) in Business Administration</div>
                     </div>
-
-                <!-- Table / IR Report -->
-                <div class="ir-section">
+                    
+                    <!-- Table / IR Report -->
+                    <div class="ir-section">
 
                     <div class="ir-toolbar">
                         <div class="search-row">
                             <button class="search-btn-left" type="button">
                                 <!-- Search SVG: EDIT stroke-width; circle r/cx/cy; path L end = longer/shorter handle -->
                                 <svg class="ir-icon-svg ir-icon-svg--search" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <circle cx="11" cy="11" r="8" />
                                     <path d="M16.657 16.657 L23.85 23.85" />
@@ -739,7 +737,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    </div>
 
                     <div class="table-container">
                         <table>
@@ -754,18 +752,25 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td>Cross-Cultural<br>management</td>
+                                    <td>BBB2063</td>
+                                    <!-- <td>2025-<br>09</td> -->
+                                    <td style="text-align: left;">11-SEP-<br>2026<br>03:00PM</td>
+                                    <td style="text-align: left;">DETSAR /<br>Examination<br>Hall</td>
+                                </tr>
+                                <tr>
+                                    <td>Company<br>Law</td>
+                                    <td>BBB2013</td>
+                                    <!-- <td>2025-<br>09</td> -->
+                                    <td style="text-align: left;">04-SEP-<br>2026<br>09:30AM</td>
+                                    <td style="text-align: left;">DETSAR /<br>Examination<br>Hall</td>
+                                </tr>
+                                <tr>
                                     <td>Leadership</td>
                                     <td>BBB3063</td>
                                     <!-- <td>2025-<br>09</td> -->
                                     <td style="text-align: left;">07-SEP-<br>2026<br>09:30AM</td>
                                     <td style="text-align: left;">GBS MPH</td>
-                                </tr>
-                                <tr>
-                                    <td>Strategic<br>Management</td>
-                                    <td>BBB3033</td>
-                                    <!-- <td>2025-<br>09</td> -->
-                                    <td style="text-align: left;">05-SEP-<br>2026<br>02:30PM</td>
-                                    <td style="text-align: left;">DETSAR /<br>Examination<br>Hall</td>
                                 </tr>
                                 <tr>
                                     <td>Retail Brand<br>Management</td>
@@ -775,14 +780,14 @@
                                     <td style="text-align: left;">DETSAR /<br>Examination<br>Hall</td>
                                 </tr>
                                 <tr>
-                                    <td>Contemporary Human<br>Resource Management</td>
+                                    <td>Contemporary<br>Human Resource<br>Management</td>
                                     <td>BBB3053</td>
                                     <!-- <td>2025-<br>09</td> -->
                                     <td style="text-align: left;">07-SEP-<br>2026<br>02:30PM</td>
                                     <td style="text-align: left;">C415</td>
                                 </tr>
                                 <tr>
-                                    <td>Business Mathematics</td>
+                                    <td>Business<br>Mathematics</td>
                                     <td>BBS2303</td>
                                     <!-- <td>2025-<br>09</td> -->
                                     <td style="text-align: left;">08-SEP-<br>2026<br>09:30AM</td>
@@ -791,11 +796,11 @@
                             </tbody>
                         </table>
                         <div class="pagination">
-                            1 - 5
+                            1 - 6
                         </div>
                     </div>
 
-                </div> <!-- /.details-section -->
+                </div>
 
         </div>
         </div>
